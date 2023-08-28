@@ -1,0 +1,16 @@
+git init en visual code
+crear un index.html
+git add index.html
+
+en el codigo de html poner para ver que tiene m de modificado y a de agregado
+
+luego git commit -m "se crea repositorio inicial" para cimentarios
+crear cuenta de git hub
+git config --list
+darle a new verde, ponerle el nombre del repositorio como nuevo y dejamos todo igual y le damos a crear
+copiar el codigo en visual studio en una terminal
+git add . para subir todo lo modificado
+git comit -m "modifique el nombre"
+git push
+git comit -m "cree un archivo nuevo"
+git push
