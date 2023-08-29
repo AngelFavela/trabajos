@@ -8,19 +8,19 @@ var libro = {
     
     prestar: function(persona) {
       if (this.estado === "Disponible") {
-        this.estado = "Prestado a " + persona;
-        return "El libro ha sido prestado a " + persona;
+        this.estado = "Prestado a " + persona
+        return "El libro ha sido prestado a " + persona
       } else {
-        return "El libro no está disponible para préstamo en este momento.";
+        return "El libro no está disponible para préstamo en este momento."
       }
     },
     
     devolver: function() {
       if (this.estado.includes("Prestado")) {
-        this.estado = "Disponible";
-        return "El libro ha sido devuelto y ahora está disponible para préstamo.";
+        this.estado = "Disponible"
+        return "El libro ha sido devuelto y ahora está disponible para préstamo."
       } else {
-        return "El libro no se encuentra prestado en este momento.";
+        return "El libro no se encuentra prestado en este momento."
       }
     },
     
@@ -30,11 +30,11 @@ var libro = {
              "Año de Publicación: " + this.añoPublicacion + "\n" +
              "Género: " + this.genero + "\n" +
              "Páginas: " + this.paginas + "\n" +
-             "Estado: " + this.estado;
+             "Estado: " + this.estado
     }
   };
   
-  console.log(libro.prestar("Juan"));
-  console.log(libro.informacion());
-  console.log(libro.devolver());
+  console.log(libro.prestar("Juan"))
+  console.log(libro.informacion())
+  console.log(libro.devolver())
   
