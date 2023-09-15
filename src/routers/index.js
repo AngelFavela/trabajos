@@ -12,6 +12,15 @@ router.get('/', async (req,res)=>{
         });
     
 });
+router.post('/add', async (req,res)=>{
+    const Valor = new Venta(req.body);
+    console.log(req.datos);
+    await Valor.save();
+    res.redirect('/');
+
+    
+});
+
 module.exports = router;
 
  
