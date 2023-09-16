@@ -20,6 +20,13 @@ router.post('/add', async (req,res)=>{
 
     
 });
+router.get('/del/:id', async (req,res)=>{
+    const {id} = req.params;
+    await Venta.findByIdAndRemove(id);
+    res.redirect('/');
+
+    
+});
 
 module.exports = router;
 

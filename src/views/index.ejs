@@ -51,13 +51,14 @@
                         <td><%= datos[i].producto  %></td>
                         <td><%= datos[i].precio  %></td>
                         <td><%= datos[i].iva  %></td>
+                        <td><%= datos[i]._id  %></td> 
                         <td>
                             <!--<a class="btn btn-primary" href="/del/<%= datos[i].id %>">Eliminar</a>-->
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                Eliminar
-                            </button>
-                            
+                            <a class="btn btn-primary" href="/del/<%= datos[i]._id %>"><button type="button" class="btn btn-primary delete-button">
+                              Eliminar
+                          </button></a>
+
                             <!-- Modal -->
                           
 
