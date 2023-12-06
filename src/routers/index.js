@@ -5,8 +5,14 @@ const { VentaModel, CuentaModel } = require('../models/ventas');
 router.get('/', (req, res) => {
   res.render('login.ejs');
 });
-
-router.get('/index', async (req, res) => {
+const requireAuth = (req, res, next) => {
+  if (req.session.usuarioAutenticado) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+};
+router.get('/index', requireAuth, async (req, res) => {
   try {
       const datos = await VentaModel.find();
       res.render('index.ejs', { datos });
@@ -109,28 +115,34 @@ router.post('/registro', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    try {
-        const { nombre, contraseña } = req.body;
-        const cuenta = await CuentaModel.findOne({ nombre, contraseña });
+  try {
+    const { nombre, contraseña } = req.body;
+    const cuenta = await CuentaModel.findOne({ nombre, contraseña });
 
-        if (cuenta) {
-            req.session.nombreUsuario = nombre;
-            req.session.usuarioAutenticado = true;
-            res.redirect('/index');
-        } else {
-            res.render('login.ejs', { error: 'Nombre o contraseña incorrectos' });
-        }
-    } catch (error) {
-        console.error('Error al autenticar:', error);
-        res.status(500).send('Error en el servidor');
+    if (cuenta) {
+      req.session.nombreUsuario = nombre;
+      req.session.usuarioAutenticado = true;
+      res.redirect('/index');
+    } else {
+      res.render('login.ejs', { error: 'Nombre o contraseña incorrectos' });
     }
+  } catch (error) {
+    console.error('Error al autenticar:', error);
+    res.status(500).send('Error en el servidor');
+  }
 });
+
+
 
 router.get('/registro', (req, res) => {
     res.render('registro.ejs');
 });
 router.get('/login', (req, res) => {
-  res.render('login.ejs');
+  if (req.session.usuarioAutenticado) {
+    res.redirect('/index');
+  } else {
+    res.render('login.ejs');
+  }
 });
 module.exports = router;
 
