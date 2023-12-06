@@ -138,7 +138,7 @@ router.get('/registro', (req, res) => {
     res.render('registro.ejs');
 });
 router.get('/login', (req, res) => {
-  if (req.session.usuarioAutenticado) {
+  if (req.session.requireAuth) {
     res.redirect('/index');
   } else {
     res.render('login.ejs');
